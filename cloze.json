@@ -1,23 +1,28 @@
 [
 	{
-		"front": "... is the proper term for a group of parrots.",
-		"back": "Pandemonium" 
+		"text": "... is the proper term for a group of parrots.",
+		"cloze": "Pandemonium",
+		"full": "Pandemonium is the proper term for a group of parrots."
 	},
 	{
-		"front": "... are the animals with the largest ears.",
-		"back": "African elephants"
+		"text": "... are the animals with the largest ears.",
+		"cloze": "African elephants",
+		"full": "African elephants are the animals with the largest ears."
 	},
 	{
-		"front": "... is the national animal of Scotland.",
-		"back": "The unicorn"
+		"text": "... is the national animal of Scotland.",
+		"cloze": "The unicorn",
+		"full": "The unicorn is the national animal of Scotland."
 	},
 	{
-		"front": "... is the most popular dog breed in the United States.",
-		"back": "Labrador Retriever"
+		"text": "... is the most popular dog breed in the United States.",
+		"cloze": "Labrador Retriever",
+		"full": "Labrador Retriever is the most popular dog breed in the United States."
 	},
 	{
-		"front": "... are the sleepies animals in the world -sleeping around 22 hours each day.",
-		"back": "Koalas"
+		"text": "... are the sleepies animals in the world -sleeping around 22 hours each day.",
+		"cloze": "Koalas",
+		"full": "Koalas are the sleepies animals in the world -sleeping around 22 hours each day."
 	}
 
 ]

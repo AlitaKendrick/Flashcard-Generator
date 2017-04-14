@@ -80,23 +80,27 @@ var clozeFlashcard = function() {
 	if (count < clozeQuestions.length) {
 		inquirer.prompt([
 			{
-				name: "cloze",
+				name: "clozeC",
 				type: "input",
-				message: clozeQuestions[count].front
+				message: clozeQuestions[count].text
 			}
 		]).then(function(answers) {
-			if (answers.cloze === clozeQuestions[count].cloze) {
+			if (answers.clozeC === clozeQuestions[count].cloze) {
 				console.log("Correct!!");
 				console.log("------------------------------------");
 			} else {
-				console.log("Wrong! The correct answer was " + clozeQuestions[count].back);
+				console.log("Wrong! The correct answer was " + clozeQuestions[count].cloze);
 				console.log("------------------------------------");
 			}; //closes promise if/else statement
 			count++;
 			clozeFlashcard();
 		}); //closes promise
 	} else {
-		console.log("You have finished all of the cloze cards!");
+		console.log("You have finished all of the cloze cards! Here are all of the facts: ");
+			for(var i = 0; i < clozeQuestions.length; i++) {
+				console.log(clozeQuestions[i].full)
+			}; //closes loop
+		console.log("------------------------------------");
 		restart();
 	}; // closes if/else statement
 }; //closes cloze function
