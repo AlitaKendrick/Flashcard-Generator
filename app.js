@@ -3,7 +3,8 @@ var clozeQuestions = require("./cloze.json");
 var basicQuestions = require("./basic.json");
 var inquirer = require("inquirer");
 var fs = require("fs");
-var count = 0;
+var basicCount = 0;
+var clozeCount = 0;
 
 //function to begin the game with a prompt to select type of flashcards 
 function begin() {
@@ -34,6 +35,8 @@ function restart () {
 			message: "Go back to the start?"
 		}
 		]).then(function(answers) {
+			basicCount = 0;
+			clozeCount = 0;
 			if (answers.restart === true) {
 				console.log("------------------------------------");
 				begin();
@@ -47,22 +50,22 @@ function restart () {
 
 //if user selects basic flashcards this function will run and go through all questions
 var basicFlashcard = function() {
-	if (count < basicQuestions.length) {
+	if (basicCount < basicQuestions.length) {
 		inquirer.prompt([
 			{
 				name: "basic",
 				type: "input",
-				message: basicQuestions[count].front
+				message: basicQuestions[basicCount].front
 			}
 		]).then(function(answers) {
-			if (answers.basic === basicQuestions[count].back) {
+			if (answers.basic === basicQuestions[basicCount].back) {
 				console.log("Correct!!");
 				console.log("------------------------------------");
 			} else {
-				console.log("Wrong. The correct answer was " + basicQuestions[count].back);
+				console.log("Wrong. The correct answer was " + basicQuestions[basicCount].back);
 				console.log("------------------------------------");
 			};
-			count++;
+			basicCount++;
 			basicFlashcard();
 		}); //close promise
 	} else {
@@ -77,22 +80,22 @@ var basicFlashcard = function() {
 
 //if user selects cloze flashcards this function will run and go through all questions
 var clozeFlashcard = function() {
-	if (count < clozeQuestions.length) {
+	if (clozeCount < clozeQuestions.length) {
 		inquirer.prompt([
 			{
 				name: "clozeC",
 				type: "input",
-				message: clozeQuestions[count].text
+				message: clozeQuestions[clozeCount].text
 			}
 		]).then(function(answers) {
-			if (answers.clozeC === clozeQuestions[count].cloze) {
+			if (answers.clozeC === clozeQuestions[clozeCount].cloze) {
 				console.log("Correct!!");
 				console.log("------------------------------------");
 			} else {
-				console.log("Wrong! The correct answer was " + clozeQuestions[count].cloze);
+				console.log("Wrong! The correct answer was " + clozeQuestions[clozeCount].cloze);
 				console.log("------------------------------------");
 			}; //closes promise if/else statement
-			count++;
+			clozeCount++;
 			clozeFlashcard();
 		}); //closes promise
 	} else {
@@ -102,6 +105,7 @@ var clozeFlashcard = function() {
 			}; //closes loop
 		console.log("------------------------------------");
 		restart();
+
 	}; // closes if/else statement
 }; //closes cloze function
 
